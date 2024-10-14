@@ -14,7 +14,9 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploy to Staging'
+                script {
+                    error 'Deployment to Staging failed'
+                }
             }
         }
         stage('Deploy to Production') {
