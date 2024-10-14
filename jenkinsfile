@@ -23,4 +23,16 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            echo 'Pipelines are like waterslides, huiiiiii'
+        }
+        success {
+            echo 'Ive slid through the pipeline'
+        }
+        failure {
+            echo 'Help! I did not make it through the pipeline'
+        }
+    }
 }
