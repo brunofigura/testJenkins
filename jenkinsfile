@@ -1,6 +1,10 @@
 pipeline {  
     agent any
 
+    parameters {
+        choice(name: 'Staging', choices:['success', 'fail'], description: 'Decide wether staging passes or fails')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -15,7 +19,11 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
+                    if (params.Staging == 'fail') { 
                     error 'Deployment to Staging failed'
+                    } else {
+                        echo 'Successfull deploying to staging'
+                    }
                 }
             }
         }
